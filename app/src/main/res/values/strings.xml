@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Rongo</string>
+
+    <!--- Splash Screen -->
+    <string name="btn_splash">会員登録</string>
+
+    <!-- Register Screen -->
+    <string name="title_register">会員登録</string>
+    <string name="hint_nickname">ロンゴ</string>
+    <string name="hint_inviteCode">キャンペーンコード（お持ちの方のみ）</string>
+    <string name="terms_privacy">利用規約とプライバシーポリシーに同意する</string>
+    <string name="btn_register">登録する</string>
+    <string name="change_device">機種変更の方はこちら</string>
+    <string name="desc_nickname">ニックネーム</string>
+    <string name="warn_nickname">※一度決めたら変更できません</string>
+    <string name="exist_nickname">このニックネームは使用できません</string>
+
+    <string name="pass_change_device">機種変更コード</string>
+    <string name="login_device_code">ログイン</string>
+    <string name="back_login">登録画面に戻る</string>
+
+    <string name="tab_home">ホーム</string>
+    <string name="tab_user">会員登録</string>
+    <string name="tab_news">お知らせ</string>
+    <string name="tab_search">検索</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
