@@ -12,6 +12,7 @@
         <activity android:name=".Activity.Login.ChangeDeviceActivity"></activity>
         <activity android:name=".Activity.Login.LoginActivity" />
         <activity android:name=".Activity.Login.SplashActivity" />
+
         <activity android:name=".Activity.Home.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

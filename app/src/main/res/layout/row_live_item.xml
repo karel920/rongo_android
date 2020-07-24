@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp">
+
+    <ImageView
+        android:id="@+id/iv_live_thumb"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/icon_live_thumb"
+        app:layout_constraintDimensionRatio="1:1" />
+
+    <ImageView
+        android:id="@+id/iv_live_status"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/img_live_status"
+        app:layout_constraintDimensionRatio="1:0.35"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.22" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_margine_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.03" />
+
+    <ImageView
+        android:id="@+id/iv_live_num"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/ic_live_watch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="@id/guide_margine_left"
+        app:layout_constraintWidth_percent="0.09" />
+
+    <TextView
+        android:id="@+id/tv_view_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:fontFamily="@font/noto_sans"
+        android:text="2343"
+        android:textColor="@color/backgroundColor"
+        android:textSize="13dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/iv_live_num"
+        app:layout_constraintStart_toEndOf="@id/iv_live_num"
+        app:layout_constraintTop_toTopOf="@id/iv_live_num" />
+
+    <TextView
+        android:id="@+id/tv_live_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosansjp_medium"
+        android:gravity="center_vertical"
+        android:includeFontPadding="false"
+        android:text="Test Live Name"
+        android:textColor="@color/backgroundColor"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toTopOf="@id/iv_live_num"
+        app:layout_constraintStart_toEndOf="@id/guide_margine_left"
+        app:layout_constraintWidth_percent="0.94" />
+
+    <TextView
+        android:id="@+id/tv_live_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_splash_background"
+        android:fontFamily="@font/notosansjp_medium"
+        android:includeFontPadding="false"
+        android:paddingHorizontal="3dp"
+        android:paddingVertical="1dp"
+        android:text="Test Live Name"
+        android:textColor="@color/mainTextColor"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toTopOf="@id/tv_live_name"
+        app:layout_constraintStart_toEndOf="@id/guide_margine_left" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
