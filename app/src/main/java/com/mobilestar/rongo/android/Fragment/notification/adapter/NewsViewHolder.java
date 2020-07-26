@@ -14,7 +14,7 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
 
     public NewsViewHolder(@NonNull View itemView) {
         super(itemView);
-        ButterKnife.bind(itemView);
+        ButterKnife.bind(this, itemView);
     }
 
     public void setData(NewsInfo info) {

@@ -61,7 +61,7 @@ public class NotificationListFragment extends BaseFragment {
         adapter = new NotificationListAdapter();
         adapter.addAllItem(mTestData);
 
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_lives);
+        RecyclerView recyclerView = view.findViewById(R.id.recycler);
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapter);

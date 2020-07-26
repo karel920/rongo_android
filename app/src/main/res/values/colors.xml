@@ -9,5 +9,6 @@
     <color name="gray">#cccccc</color>
     <color name="goldColor">#BBA884</color>
     <color name="backgroundColor">#F5F5F5</color>
+    <color name="white">#FFFFFF</color>
     <color name="seperateColor">#D9D9D9</color>
 </resources>

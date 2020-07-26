@@ -1,4 +1,4 @@
-package com.mobilestar.rongo.android.Fragment.notification;
+package com.mobilestar.rongo.android.Fragment.rank;
 
 
 import android.os.Bundle;
@@ -13,10 +13,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mobilestar.rongo.android.Fragment.notification.adapter.NewsListAdapter;
-import com.mobilestar.rongo.android.Fragment.notification.adapter.NotificationListAdapter;
-import com.mobilestar.rongo.android.Fragment.notification.model.NewsInfo;
-import com.mobilestar.rongo.android.Fragment.notification.model.NotificationInfo;
+import com.mobilestar.rongo.android.Fragment.rank.adapter.RankListAdapter;
+import com.mobilestar.rongo.android.Fragment.rank.model.RankInfo;
 import com.mobilestar.rongo.android.R;
 import com.mobilestar.rongo.android.base.BaseFragment;
 import com.mobilestar.rongo.android.interfaces.IRecyclerClickListener;
@@ -28,16 +26,16 @@ import butterknife.BindView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NewsListFragment extends BaseFragment implements IRecyclerClickListener {
+public class RankListFragment extends BaseFragment implements IRecyclerClickListener {
 
     @BindView(R.id.tv_empty)
     TextView tvEmpty;
 
-    private NewsListAdapter adapter;
+    private RankListAdapter adapter;
     private int PAGE_SIZE = 10, page = 1;
     private boolean isLoading, isLastPage;
 
-    ArrayList<NewsInfo> mTestData;
+    ArrayList<RankInfo> mTestData;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,11 +54,11 @@ public class NewsListFragment extends BaseFragment implements IRecyclerClickList
     private void setRecyclerReward(View view) {
         page = 1;
 
-        mTestData = new ArrayList<NewsInfo>();
+        mTestData = new ArrayList<RankInfo>();
         for(int i =0; i< 15; i++){
-            mTestData.add(new NewsInfo());
+            mTestData.add(new RankInfo());
         }
-        adapter = new NewsListAdapter(this);
+        adapter = new RankListAdapter(this);
         adapter.addAllItem(mTestData);
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler);
@@ -131,11 +129,11 @@ public class NewsListFragment extends BaseFragment implements IRecyclerClickList
         }
     }
 
-    private static NewsListFragment instance;
+    private static RankListFragment instance;
 
-    public static NewsListFragment getInstance() {
+    public static RankListFragment getInstance() {
         if (instance == null) {
-            instance = new NewsListFragment();
+            instance = new RankListFragment();
         }
         return instance;
     }

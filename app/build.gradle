@@ -14,6 +14,21 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            storeFile file('./src/main/key')
+            storePassword 'rango123'
+            keyPassword 'rango123'
+            keyAlias 'key0'
+        }
+        debug {
+            storeFile file('./src/main/key')
+            storePassword 'rango123'
+            keyPassword 'rango123'
+            keyAlias 'key0'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false

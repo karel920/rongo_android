@@ -17,15 +17,20 @@ import com.mobilestar.rongo.android.Activity.Home.fragment.adapter.LiveRecyclerA
 import com.mobilestar.rongo.android.Activity.Home.fragment.model.LiveInfo;
 import com.mobilestar.rongo.android.R;
 import com.mobilestar.rongo.android.base.BaseFragment;
+import com.mobilestar.rongo.android.helper.InternetCheck;
 import com.mobilestar.rongo.android.interfaces.IRecyclerClickListener;
+import com.mobilestar.rongo.android.retrofit.ApiCall;
+import com.mobilestar.rongo.android.retrofit.IApiCallback;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import retrofit2.Response;
+
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LiveListFragment extends BaseFragment implements IRecyclerClickListener {
+public class LiveListFragment extends BaseFragment implements IRecyclerClickListener, IApiCallback {
 
     @BindView(R.id.tv_empty)
     TextView tvEmpty;
@@ -60,7 +65,7 @@ public class LiveListFragment extends BaseFragment implements IRecyclerClickList
         adapter = new LiveRecyclerAdapter(this);
         adapter.addAllItem(mTestData);
 
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_lives);
+        RecyclerView recyclerView = view.findViewById(R.id.recycler);
         GridLayoutManager manager = new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapter);
@@ -94,12 +99,12 @@ public class LiveListFragment extends BaseFragment implements IRecyclerClickList
 
 
     private void getReward() {
-        //if (InternetCheck.isConnectedToInternet(getActivity())) {
-//            hideLoader();
-//            showLoader();
-//            isLoading = true;
-//            ApiCall.getInstance().awufCashList(preference.getLoginData().getId(), String.valueOf(page), this);
-        // }
+        if (InternetCheck.isConnectedToInternet(getActivity())) {
+            hideLoader();
+            showLoader();
+            isLoading = true;
+            ApiCall.getInstance().register(preference.getLoginData().getId(), String.valueOf(page), this);
+         }
     }
 
     private void showLoader() {
@@ -135,5 +140,15 @@ public class LiveListFragment extends BaseFragment implements IRecyclerClickList
             instance = new LiveListFragment();
         }
         return instance;
+    }
+
+    @Override
+    public void onSuccess(String type, Response response) {
+
+    }
+
+    @Override
+    public void onFailure(Object data) {
+
     }
 }

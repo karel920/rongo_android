@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/gray" />
+
+    <ImageView
+        android:id="@+id/iv_product"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerVertical="true"
+        android:layout_marginVertical="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_toRightOf="@id/tv_rank"
+        android:scaleType="centerCrop"
+        android:src="@drawable/icon_live_thumb" />
+
+    <ImageView
+        android:id="@+id/iv_crown"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:src="@drawable/ic_rank_top" />
+
+    <TextView
+        android:id="@+id/tv_rank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginHorizontal="5dp"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:minWidth="19dp"
+        android:padding="3dp"
+        android:textColor="@color/mainTextColor"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/tv_product_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@id/btn_go_store"
+        android:layout_toRightOf="@id/iv_product"
+        android:fontFamily="@font/notosansjp_regular"
+        android:includeFontPadding="false"
+        android:text="Notification text test \n this is test notification"
+        android:textColor="@color/mainTextColor"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/tv_store_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_product_name"
+        android:layout_marginTop="1dp"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@id/iv_product"
+        android:fontFamily="@font/notosansjp_regular"
+        android:includeFontPadding="false"
+        android:text="Store Name"
+        android:textColor="@color/gray"
+        android:textSize="10dp" />
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_store_name"
+        android:layout_marginTop="1dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="3dp"
+        android:layout_toRightOf="@id/iv_product"
+        android:fontFamily="@font/notosansjp_bold"
+        android:includeFontPadding="false"
+        android:text=" $ 3432"
+        android:textColor="@color/mainTextColor"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/btn_go_store"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/btn_bg_backlogin"
+        android:fontFamily="@font/notosansjp_bold"
+        android:includeFontPadding="false"
+        android:paddingHorizontal="7dp"
+        android:paddingVertical="2dp"
+        android:text="Store"
+        android:textColor="@color/goldColor"
+        android:textSize="16dp" />
+
+</RelativeLayout>
