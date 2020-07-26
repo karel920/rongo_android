@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mobilestar.rongo.android">
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,11 +8,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.Login.ChangeDeviceActivity"></activity>
-        <activity android:name=".Activity.Login.LoginActivity" />
-        <activity android:name=".Activity.Login.SplashActivity" />
 
-        <activity android:name=".Activity.Home.MainActivity">
+        <activity android:name=".activity.GoodDetail.GoodDetailActivity"/>
+        <activity android:name=".activity.Login.ChangeDeviceActivity" />
+        <activity android:name=".activity.Login.LoginActivity" />
+        <activity android:name=".activity.Login.SplashActivity" />
+        <activity android:name=".activity.Home.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
