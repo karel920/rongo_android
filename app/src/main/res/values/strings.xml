@@ -28,6 +28,12 @@
     <string name="notification_title">お知らせ</string>
     <string name="notification">お知らせ</string>
     <string name="news">ニュース</string>
+    <string name="title_activity_good_detail">GoodDetailActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
 
 
 </resources>

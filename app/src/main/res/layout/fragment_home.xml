@@ -20,6 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center"
+                android:id="@+id/home_radio"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -28,27 +29,39 @@
                     android:button="@android:color/transparent"
                     android:background="@android:color/transparent"
                     android:gravity="center"
+                    android:id="@+id/home_radio_live"
+                    android:textColor="@color/tab_txt_color"
+                    android:checked="true"
                     android:text="ライブ"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:button="@android:color/transparent"
+                    android:background="@android:color/transparent"
                     android:gravity="center"
+                    android:id="@+id/home_radio_good"
+                    android:textColor="@color/tab_txt_color"
                     android:text="商品"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:button="@android:color/transparent"
+                    android:background="@android:color/transparent"
                     android:gravity="center"
+                    android:id="@+id/home_radio_ranking"
+                    android:textColor="@color/tab_txt_color"
                     android:text="ランキング"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:button="@android:color/transparent"
+                    android:background="@android:color/transparent"
                     android:gravity="center"
+                    android:id="@+id/home_radio_store"
+                    android:textColor="@color/tab_txt_color"
                     android:text="ストア"/>
             </RadioGroup>
 

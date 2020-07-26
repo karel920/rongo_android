@@ -2,6 +2,7 @@ package com.mobilestar.rongo.android.Fragment.ProfileStack;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -16,9 +17,14 @@ public class ProfileMenuFragment extends Fragment {
 
     ProfileFragmentListener fragmentListener;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     public ProfileMenuFragment(ProfileFragmentListener _fragmentListener) {
         // Required empty public constructor
+
         this.fragmentListener = _fragmentListener;
     }
 
