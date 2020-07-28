@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.RadioGroup;
 
 import com.mobilestar.rongo.android.Fragment.rank.RankListFragment;
+import com.mobilestar.rongo.android.activity.Home.fragment.GoodFragment;
 import com.mobilestar.rongo.android.activity.Home.fragment.LiveListFragment;
 import com.mobilestar.rongo.android.R;
 import com.mobilestar.rongo.android.base.BaseFragment;
@@ -38,7 +39,7 @@ public class HomeFragment extends BaseFragment {
                         getChildFragmentManager().beginTransaction().replace(R.id.fragment_container, LiveListFragment.getInstance()).commit();
                         break;
                     case R.id.home_radio_good:
-//                        getChildFragmentManager().beginTransaction().replace(R.id.fragment_container, GoodFragment.newInstance()).commit();
+                        getChildFragmentManager().beginTransaction().replace(R.id.fragment_container, GoodFragment.newInstance()).commit();
                         break;
                     case R.id.home_radio_ranking:
                         getChildFragmentManager().beginTransaction().replace(R.id.fragment_container, RankListFragment.getInstance()).commit();

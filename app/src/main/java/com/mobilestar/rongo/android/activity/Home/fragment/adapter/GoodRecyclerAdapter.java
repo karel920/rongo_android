@@ -31,14 +31,16 @@ public class GoodRecyclerAdapter extends RecyclerView.Adapter<GoodRecyclerAdapte
         holder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onRecyclerClick(position,null, null); //should update parameters.
+                if(listener != null) {
+                    listener.onRecyclerClick(position,null, null); //should update parameters.
+                }
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return 20;
     }
 
     static class GoodRecycleerVH extends RecyclerView.ViewHolder {

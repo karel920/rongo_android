@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     @OnClick(R.id.btnRegister)
-    private void register() {
+    public void register() {
         if (this.txtNickName.getText() == null || this.txtNickName.getText().toString().equals("")) {
             return;
         }

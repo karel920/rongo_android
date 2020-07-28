@@ -318,6 +318,8 @@
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:text="購入手続きへ"
+                    android:onClick="onPurchase"
+                    android:id="@+id/good_detail_purchase_button"
                     android:textColor="@android:color/white" />
             </LinearLayout>
         </LinearLayout>

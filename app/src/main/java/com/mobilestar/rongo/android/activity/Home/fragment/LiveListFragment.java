@@ -103,7 +103,7 @@ public class LiveListFragment extends BaseFragment implements IRecyclerClickList
             hideLoader();
             showLoader();
             isLoading = true;
-            ApiCall.getInstance().register(preference.getLoginData().getId(), String.valueOf(page), this);
+            //ApiCall.getInstance().register(preference.getLoginData().getId(), String.valueOf(page), this);
          }
     }
 

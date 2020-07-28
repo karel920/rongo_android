@@ -1,6 +1,6 @@
 package com.mobilestar.rongo.android.retrofit;
 
-import com.mobilestar.rongo.android.Activity.Home.fragment.model.LiveInfoRes;
+import com.mobilestar.rongo.android.activity.Home.fragment.model.LiveInfoRes;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;

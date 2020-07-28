@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mobilestar.rongo.android">
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +15,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".activity.GoodDetail.GoodDetailActivity"/>
+        <!--
+               Set to true if your app is Standalone, that is, it does not require the handheld
+               app to run.
+        -->
+        <activity android:name=".activity.Purchase.AddressAddActivity"/>
+        <activity android:name=".activity.Purchase.AddressListActivity"/>
+        <activity android:name=".activity.Purchase.PaymentMethodAddActivity"/>
+        <activity android:name=".activity.Purchase.PaymentMethodActivity"/>
+        <activity android:name=".activity.Purchase.PurchaseActivity"/>
+        <activity android:name=".activity.GoodDetail.GoodDetailActivity" />
         <activity android:name=".activity.Login.ChangeDeviceActivity" />
         <activity android:name=".activity.Login.LoginActivity" />
         <activity android:name=".activity.Login.SplashActivity" />

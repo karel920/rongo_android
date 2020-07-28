@@ -3,17 +3,15 @@ package com.mobilestar.rongo.android.helper;
 import android.app.ProgressDialog;
 import android.content.Context;
 
-import com.marcus.justship.R;
-
 public class ProgressHelper {
     private static ProgressDialog dialog;
 
     public static void showDialog(Context context) {
         try {
-            dialog = new ProgressDialog(context, R.style.MyProgressDialogStyle);
-            dialog.setCancelable(false);
-            dialog.setMessage(context.getString(R.string.loading));
-            dialog.show();
+//            dialog = new ProgressDialog(context, R.style.MyProgressDialogStyle);
+//            dialog.setCancelable(false);
+//            dialog.setMessage(context.getString(R.string.loading));
+//            dialog.show();
         } catch (Exception e) {
             e.printStackTrace();
         }

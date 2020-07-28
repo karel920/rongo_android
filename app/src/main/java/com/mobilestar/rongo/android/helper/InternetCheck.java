@@ -5,7 +5,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.marcus.justship.R;
+import com.mobilestar.rongo.android.R;
 
 public class InternetCheck {
 
