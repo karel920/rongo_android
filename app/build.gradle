@@ -14,21 +14,6 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    signingConfigs {
-        release {
-            storeFile file('./src/main/key')
-            storePassword 'rango123'
-            keyPassword 'rango123'
-            keyAlias 'key0'
-        }
-        debug {
-            storeFile file('./src/main/key')
-            storePassword 'rango123'
-            keyPassword 'rango123'
-            keyAlias 'key0'
-        }
-    }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -55,6 +40,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.wear:wear:1.0.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
     // retrofit
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
@@ -67,4 +53,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     implementation 'com.romandanylyk:pageindicatorview:1.0.3'
+    implementation "com.arthurivanets.bottomsheet:bottomsheets-core:1.0.0"
+    compileOnly 'com.google.android.wearable:wearable:2.7.0'
 }

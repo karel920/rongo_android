@@ -10,10 +10,10 @@ public class ProgressHelper {
 
     public static void showDialog(Context context) {
         try {
-            dialog = new ProgressDialog(context, R.style.MyProgressDialogStyle);
-            dialog.setCancelable(false);
-            dialog.setMessage(context.getString(R.string.loading));
-            dialog.show();
+//            dialog = new ProgressDialog(context, R.style.MyProgressDialogStyle);
+//            dialog.setCancelable(false);
+//            dialog.setMessage(context.getString(R.string.loading));
+//            dialog.show();
         } catch (Exception e) {
             e.printStackTrace();
         }

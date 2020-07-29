@@ -3,64 +3,146 @@ package com.mobilestar.rongo.android.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageButton;
+import android.widget.Spinner;
 
 import com.mobilestar.rongo.android.R;
+import com.mobilestar.rongo.android.activity.Home.fragment.adapter.GoodRecyclerAdapter;
+import com.mobilestar.rongo.android.activity.Home.fragment.adapter.LiveRecyclerAdapter;
+import com.mobilestar.rongo.android.activity.Home.fragment.model.LiveInfo;
+import com.mobilestar.rongo.android.adpater.SearchCategorySpinnerAdapter;
+import com.mobilestar.rongo.android.adpater.StoreAdapter;
+import com.mobilestar.rongo.android.interfaces.IRecyclerClickListener;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SearchFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class SearchFragment extends Fragment {
+import java.util.ArrayList;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class SearchFragment extends Fragment implements IRecyclerClickListener {
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    RecyclerView goodList;
+    RecyclerView liveList;
+    RecyclerView storeList;
+    Spinner searchCategory;
+    ImageButton headerClose;
+
+    View headerContianer;
+    View storeContainer;
+    View goodContainer;
+    View liveContainer;
+
+    GoodRecyclerAdapter goodListAdapter;
+    LiveRecyclerAdapter liveListAdapter;
+    StoreAdapter storeAdapter;
+    SearchCategorySpinnerAdapter categorySpinnerAdapter;
+
+    ArrayList<LiveInfo> mTestData;
 
     public SearchFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SearchFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static SearchFragment newInstance(String param1, String param2) {
+    public static SearchFragment newInstance() {
         SearchFragment fragment = new SearchFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false);
+        View layout =  inflater.inflate(R.layout.fragment_search, container, false);
+        this.goodList = layout.findViewById(R.id.search_good_list);
+        this.liveList = layout.findViewById(R.id.search_live_list);
+        this.storeList = layout.findViewById(R.id.search_store_list);
+        this.searchCategory = layout.findViewById(R.id.search_category);
+
+        this.headerContianer = layout.findViewById(R.id.search_header);
+        this.storeContainer = layout.findViewById(R.id.search_store_container);
+        this.goodContainer = layout.findViewById(R.id.search_good_container);
+        this.liveContainer = layout.findViewById(R.id.search_live_container);
+
+        this.headerClose = layout.findViewById(R.id.search_header_close);
+
+        mTestData = new ArrayList<LiveInfo>();
+        for(int i =0; i< 15; i++){
+            mTestData.add(new LiveInfo());
+        }
+
+        this.goodListAdapter = new GoodRecyclerAdapter();
+        this.liveListAdapter = new LiveRecyclerAdapter(this);
+        this.storeAdapter = new StoreAdapter();
+        this.categorySpinnerAdapter = new SearchCategorySpinnerAdapter();
+
+        this.liveListAdapter.addAllItem(mTestData);
+
+        this.goodList.setAdapter(this.goodListAdapter);
+        this.liveList.setAdapter(this.liveListAdapter);
+        this.storeList.setAdapter(this.storeAdapter);
+        this.searchCategory.setAdapter(this.categorySpinnerAdapter);
+
+        goodListAdapter.notifyDataSetChanged();
+        liveListAdapter.notifyDataSetChanged();
+        storeAdapter.notifyDataSetChanged();
+
+        this.searchCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0 :
+                        goodContainer.setVisibility(View.VISIBLE);
+                        storeContainer.setVisibility(View.VISIBLE);
+                        liveContainer.setVisibility(View.VISIBLE);
+                        break;
+                    case 1:
+                        hideAllContainers();
+                        storeContainer.setVisibility(View.VISIBLE);
+                        break;
+                    case 2:
+                        hideAllContainers();
+                        goodContainer.setVisibility(View.VISIBLE);
+                        break;
+                    case 3:
+                        hideAllContainers();
+                        liveContainer.setVisibility(View.VISIBLE);
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                goodContainer.setVisibility(View.VISIBLE);
+                storeContainer.setVisibility(View.VISIBLE);
+                liveContainer.setVisibility(View.VISIBLE);
+            }
+        });
+        this.headerClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                headerContianer.setVisibility(View.GONE);
+            }
+        });
+
+        return layout;
+    }
+
+    private void hideAllContainers() {
+        this.goodContainer.setVisibility(View.GONE);
+        this.storeContainer.setVisibility(View.GONE);
+        this.liveContainer.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onRecyclerClick(int pos, Object data, Object type) {
+
     }
 }

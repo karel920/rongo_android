@@ -3,6 +3,8 @@
     package="com.mobilestar.rongo.android">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -15,6 +17,12 @@
 
         <activity android:name=".activity.GoodDetail.GoodDetailActivity"/>
         <activity android:name=".activity.Home.live.activity.LiveRoomActivity"/>
+        <activity android:name=".activity.Purchase.AddressAddActivity"/>
+        <activity android:name=".activity.Purchase.AddressListActivity"/>
+        <activity android:name=".activity.Purchase.PaymentMethodAddActivity"/>
+        <activity android:name=".activity.Purchase.PaymentMethodActivity"/>
+        <activity android:name=".activity.Purchase.PurchaseActivity"/>
+        <activity android:name=".activity.GoodDetail.GoodDetailActivity" />
         <activity android:name=".activity.Login.ChangeDeviceActivity" />
         <activity android:name=".activity.Login.LoginActivity" />
         <activity android:name=".activity.Login.SplashActivity">

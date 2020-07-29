@@ -1,10 +1,12 @@
 package com.mobilestar.rongo.android.activity.GoodDetail;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Layout;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +16,10 @@ import com.mobilestar.rongo.android.activity.GoodDetail.Adapter.GoodDetailImgAda
 import com.mobilestar.rongo.android.activity.GoodDetail.Adapter.GoodDetailLiveAdapter;
 import com.mobilestar.rongo.android.R;
 import com.mobilestar.rongo.android.View.NonScrollableListView;
+import com.mobilestar.rongo.android.activity.GoodDetail.Sheet.PucharseSheet;
+import com.mobilestar.rongo.android.activity.Purchase.PurchaseActivity;
+
+import butterknife.OnClick;
 
 public class GoodDetailActivity extends AppCompatActivity {
 
@@ -76,5 +82,11 @@ public class GoodDetailActivity extends AppCompatActivity {
         if(currentSelection > 0) {
             this.goodImagesViewPager.setCurrentItem(currentSelection - 1 , true);
         }
+    }
+
+    @OnClick(R.id.good_detail_purchase_button)
+    public void onPurchase(View v) {
+        Intent intent = new Intent(this, PurchaseActivity.class);
+        startActivity(intent);
     }
 }

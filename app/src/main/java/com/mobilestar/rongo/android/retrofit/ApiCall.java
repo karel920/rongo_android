@@ -6,6 +6,10 @@ import com.mobilestar.rongo.android.activity.Login.model.LoginInfo;
 import com.mobilestar.rongo.android.activity.Login.model.LoginRes;
 
 import java.util.ArrayList;
+import com.mobilestar.rongo.android.activity.Home.fragment.model.LiveInfo;
+import com.mobilestar.rongo.android.activity.Home.fragment.model.LiveInfoRes;
+
+import java.io.File;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
