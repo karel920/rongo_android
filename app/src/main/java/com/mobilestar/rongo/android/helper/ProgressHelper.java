@@ -3,7 +3,7 @@ package com.mobilestar.rongo.android.helper;
 import android.app.ProgressDialog;
 import android.content.Context;
 
-import com.marcus.justship.R;
+import com.mobilestar.rongo.android.R;
 
 public class ProgressHelper {
     private static ProgressDialog dialog;

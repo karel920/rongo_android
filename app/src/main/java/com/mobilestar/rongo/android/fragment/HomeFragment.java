@@ -1,4 +1,4 @@
-package com.mobilestar.rongo.android.Fragment;
+package com.mobilestar.rongo.android.fragment;
 
 import android.os.Bundle;
 

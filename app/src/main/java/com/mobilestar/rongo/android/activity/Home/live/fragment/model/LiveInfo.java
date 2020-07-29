@@ -1,4 +1,4 @@
-package com.mobilestar.rongo.android.activity.Home.fragment.model;
+package com.mobilestar.rongo.android.activity.Home.live.fragment.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

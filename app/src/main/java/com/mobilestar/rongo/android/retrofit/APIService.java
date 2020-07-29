@@ -1,6 +1,10 @@
 package com.mobilestar.rongo.android.retrofit;
 
-import com.mobilestar.rongo.android.Activity.Home.fragment.model.LiveInfoRes;
+import com.mobilestar.rongo.android.activity.Home.fragment.model.LiveInfoRes;
+import com.mobilestar.rongo.android.activity.Home.fragment.model.LiveListInfo;
+import com.mobilestar.rongo.android.activity.Login.model.LoginRes;
+
+import java.util.ArrayList;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -8,6 +12,8 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -15,19 +21,22 @@ import retrofit2.http.Part;
 interface APIService {
 
     @Multipart
-    @POST("user_register")
-    Call<LiveInfoRes> register(
-            @Part("user_name") RequestBody userName,
-            @Part("email") RequestBody email,
-            @Part("phone") RequestBody phone,
-            @Part("country_code") RequestBody countryCode,
-            @Part("password") RequestBody password,
-            @Part("facebook_id") RequestBody facebook_id,
-            @Part("google_id") RequestBody google_id,
-            @Part("device_token") RequestBody deviceToken,
-            @Part("first_referral") RequestBody firstReferralId,
-            @Part MultipartBody.Part image
+    @POST("auth/register/customer")
+    Call<LoginRes> register(
+            @Part("nickname") RequestBody nickName,
+            @Part("uuid") RequestBody uuid,
+            @Part("invite_code") RequestBody inviteCode
     );
+
+    @Multipart
+    @POST("auth/login/customer")
+    Call<LoginRes> login(
+            @Part("nickname") RequestBody nickName,
+            @Part("uuid") RequestBody uuid
+    );
+
+    @GET("live")
+    Call<ArrayList<LiveListInfo>> getLiveList(@Header("Authorization") String tokenString);
 
     @FormUrlEncoded
     @POST("user_name_check")

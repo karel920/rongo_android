@@ -1,4 +1,4 @@
-package com.mobilestar.rongo.android.activity.Home.fragment.model;
+package com.mobilestar.rongo.android.activity.Home.live.fragment.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -15,7 +15,7 @@ public class LiveInfoRes {
     private String errorMsg;
     @SerializedName("data")
     @Expose
-    private List<LiveListInfo> data = null;
+    private List<LiveInfo> data = null;
 
 
     public String getErrorCode() {
@@ -26,7 +26,7 @@ public class LiveInfoRes {
         return errorMsg;
     }
 
-    public List<LiveListInfo> getData() {
+    public List<LiveInfo> getData() {
         return data;
     }
 }

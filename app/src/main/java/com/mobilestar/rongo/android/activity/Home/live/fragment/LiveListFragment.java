@@ -1,10 +1,8 @@
-package com.mobilestar.rongo.android.activity.Home.fragment;
+package com.mobilestar.rongo.android.activity.Home.live.fragment;
 
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,19 +14,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mobilestar.rongo.android.activity.Home.MainActivity;
 import com.mobilestar.rongo.android.activity.Home.fragment.adapter.LiveRecyclerAdapter;
-import com.mobilestar.rongo.android.activity.Home.fragment.model.LiveListInfo;
 import com.mobilestar.rongo.android.R;
 import com.mobilestar.rongo.android.activity.Home.live.activity.LiveRoomActivity;
-import com.mobilestar.rongo.android.activity.Login.LoginActivity;
-import com.mobilestar.rongo.android.activity.Login.model.LoginRes;
+import com.mobilestar.rongo.android.activity.Home.live.fragment.model.LiveInfo;
 import com.mobilestar.rongo.android.base.BaseFragment;
-import com.mobilestar.rongo.android.helper.AppSharedPreference;
-import com.mobilestar.rongo.android.helper.InternetCheck;
-import com.mobilestar.rongo.android.helper.ProgressHelper;
 import com.mobilestar.rongo.android.interfaces.IRecyclerClickListener;
-import com.mobilestar.rongo.android.retrofit.ApiCall;
 import com.mobilestar.rongo.android.retrofit.IApiCallback;
 
 import java.util.ArrayList;
@@ -48,7 +39,7 @@ public class LiveListFragment extends BaseFragment implements IRecyclerClickList
     private int PAGE_SIZE = 16, page = 1;
     private boolean isLoading, isLastPage;
 
-    ArrayList<LiveListInfo> mLiveList;
+    ArrayList<LiveInfo> mTestData;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,9 +58,12 @@ public class LiveListFragment extends BaseFragment implements IRecyclerClickList
     private void setRecyclerReward(View view) {
         page = 1;
 
-        mLiveList = new ArrayList<LiveListInfo>();
+        mTestData = new ArrayList<LiveInfo>();
+        for(int i =0; i< 15; i++){
+            mTestData.add(new LiveInfo());
+        }
         adapter = new LiveRecyclerAdapter(this);
-        adapter.addAllItem(mLiveList);
+        adapter.addAllItem(mTestData);
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler);
         GridLayoutManager manager = new GridLayoutManager(getContext(), 2);
@@ -100,33 +94,30 @@ public class LiveListFragment extends BaseFragment implements IRecyclerClickList
                 }
             }
         });
-
         getReward();
     }
 
 
     private void getReward() {
-        if (InternetCheck.isConnectedToInternet(getActivity())) {
+//        if (InternetCheck.isConnectedToInternet(getActivity())) {
             hideLoader();
             showLoader();
             isLoading = true;
-            AppSharedPreference preference = AppSharedPreference.getInstance(getContext());
-            String token = preference.getTokenData().getToken().getAccessToken();
-            ApiCall.getInstance().getLiveList(token, this);
-         }
+//            ApiCall.getInstance().register(preference.getLoginData().getId(), String.valueOf(page), this);
+//         }
     }
 
     private void showLoader() {
         /*if (!TextUtils.isEmpty(search) && page == 1)
             refreshLayout.setRefreshing(true);
         else if (page == 1 && !refreshLayout.isRefreshing())*/
-        ProgressHelper.showDialog(getContext());
+//        ProgressHelper.showDialog(getContext());
         /*else if (!refreshLayout.isRefreshing())
             progressBar.setVisibility(View.VISIBLE);*/
     }
 
     private void hideLoader() {
-        ProgressHelper.dismiss();
+//        ProgressHelper.dismiss();
         /*progressBar.setVisibility(View.GONE);
         refreshLayout.setRefreshing(false);*/
         isLoading = false;
@@ -153,21 +144,11 @@ public class LiveListFragment extends BaseFragment implements IRecyclerClickList
 
     @Override
     public void onSuccess(String type, Response response) {
-        Log.e("Live List", response.body().toString());
 
-        this.hideLoader();
-
-        for (LiveListInfo info: (ArrayList<LiveListInfo>)response.body()) {
-            mLiveList.add(info);
-        }
-
-        adapter.addAllItem(mLiveList);
     }
 
     @Override
     public void onFailure(Object data) {
-        Log.e("Live List Error", data.toString());
 
-        this.hideLoader();
     }
 }

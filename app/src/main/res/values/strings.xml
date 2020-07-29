@@ -18,6 +18,7 @@
     <string name="pass_change_device">機種変更コード</string>
     <string name="login_device_code">ログイン</string>
     <string name="back_login">登録画面に戻る</string>
+    <string name="loading"></string>
 
     <string name="tab_home">ホーム</string>
     <string name="tab_user">会員登録</string>

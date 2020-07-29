@@ -57,7 +57,7 @@
         app:layout_constraintGuide_percent="0.92" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnSplashRegister"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="0dp"
         android:layout_height="50dp"

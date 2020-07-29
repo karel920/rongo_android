@@ -7,10 +7,6 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.widget.DatePicker;
 import android.widget.TextView;
-
-import com.marcus.justship.interfaces.SelectDate;
-import com.marcus.justship.interfaces.SelectTime;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -142,69 +138,4 @@ public class DateUtill {
 
         return false;
     }
-
-    public static void selectTime(Context context, SelectTime onSelectTime, String currentTime) {
-        Calendar calendar = Calendar.getInstance();
-        if (!TextUtils.isEmpty(currentTime)) {
-            String[] hourAndMin = currentTime.split(":");
-            calendar.set(Calendar.HOUR, Integer.parseInt(hourAndMin[0]));
-            calendar.set(Calendar.MINUTE, Integer.parseInt(hourAndMin[1]));
-        }
-        int hour;
-        if (calendar.get(Calendar.AM_PM) == 1) {
-            hour = calendar.get(Calendar.HOUR);
-        } else {
-            hour = calendar.get(Calendar.HOUR) + 12;
-        }
-        int minute = calendar.get(Calendar.MINUTE);
-
-        // Launch Time Picker Dialog
-        TimePickerDialog timePickerDialog = new TimePickerDialog(context,
-                (view, hourOfDay, minute1) -> {
-                    if (hourOfDay < 10) {
-                        if (minute1 < 10) {
-                            onSelectTime.onTimeSelected("0" + hourOfDay + ":0" + minute1);
-                        }else{
-                            onSelectTime.onTimeSelected("0" + hourOfDay + ":" + minute1);
-                        }
-                    } else {
-                        if (minute1 < 10) {
-                            onSelectTime.onTimeSelected(hourOfDay + ":0" + minute1);
-                        }else {
-                            onSelectTime.onTimeSelected(hourOfDay + ":" + minute1);
-                        }
-                    }
-                }, hour, minute, true);
-        timePickerDialog.show();
-    }
-
-    public static void selectDate(Context context, SelectDate selectDate, String startDate, String endDate) {
-        Calendar calendar = Calendar.getInstance();
-
-        if (!TextUtils.isEmpty(endDate)) {
-            try {
-                calendar.setTimeInMillis(new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(endDate).getTime());
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        }
-
-        DatePickerDialog dialog = new DatePickerDialog(context, (datePicker, i, i1, i2) -> {
-            calendar.set(Calendar.YEAR, i);
-            calendar.set(Calendar.MONTH, i1);
-            calendar.set(Calendar.DAY_OF_MONTH, i2);
-            selectDate.onDateSelected(new SimpleDateFormat("yyyy-MM-dd",
-                    Locale.ENGLISH).format(calendar.getTime()), "");
-        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-        if (!TextUtils.isEmpty(startDate)) {
-            try {
-                dialog.getDatePicker().setMinDate(new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse(startDate).getTime());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else
-            dialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
-        dialog.show();
-    }
-
 }

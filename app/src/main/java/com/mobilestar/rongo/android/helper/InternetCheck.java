@@ -5,8 +5,6 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.marcus.justship.R;
-
 public class InternetCheck {
 
     public static Boolean isConnectedToInternet(Context context) {
@@ -26,15 +24,15 @@ public class InternetCheck {
 
 
     private static void showNoInternetDialog(Context context) {
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
-        alertDialog.setTitle(context.getString(R.string.app_name));
-        alertDialog.setCancelable(false);
-        alertDialog.setMessage(context.getString(R.string.internet_connection));
-        alertDialog.setPositiveButton(
-                context.getString(android.R.string.ok), (dialog, which) -> {
-                    dialog.dismiss();
-                });
-        alertDialog.show();
+//        AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+//        alertDialog.setTitle(context.getString(R.string.app_name));
+//        alertDialog.setCancelable(false);
+//        alertDialog.setMessage(context.getString(R.string.internet_connection));
+//        alertDialog.setPositiveButton(
+//                context.getString(android.R.string.ok), (dialog, which) -> {
+//                    dialog.dismiss();
+//                });
+//        alertDialog.show();
     }
 
 
