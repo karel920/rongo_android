@@ -14,8 +14,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 class RestClient {
 
 //    private static final String BASE_URL = "http://192.168.0.110:8888/justship/public/api/";;//"http://192.168.0.106:8000/api/";//
-//    private static final String BASE_URL = "http://192.168.0.109:8888/api/";
-    private static final String BASE_URL = "http://192.168.0.102:8000/api/";
+    private static final String BASE_URL = "http://192.168.0.109:8888/api/";
+//    private static final String BASE_URL = "http://192.168.0.102:8000/api/";
 
     private static APIService apiRestInterfaces;
 

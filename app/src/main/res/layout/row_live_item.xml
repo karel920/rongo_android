@@ -14,6 +14,13 @@
         app:layout_constraintDimensionRatio="1:1" />
 
     <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/img_gradient"
+        app:layout_constraintDimensionRatio="1:1" />
+
+    <ImageView
         android:id="@+id/iv_live_status"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -33,9 +40,9 @@
 
     <ImageView
         android:id="@+id/iv_live_num"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="10dp"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginBottom="8dp"
         android:src="@drawable/ic_live_watch"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
@@ -52,6 +59,10 @@
         android:textColor="@color/backgroundColor"
         android:textSize="13dp"
         android:textStyle="bold"
+        android:shadowDx="0.3"
+        android:shadowDy="0.3"
+        android:shadowColor="#333333"
+        android:shadowRadius="2"
         app:layout_constraintBottom_toBottomOf="@id/iv_live_num"
         app:layout_constraintStart_toEndOf="@id/iv_live_num"
         app:layout_constraintTop_toTopOf="@id/iv_live_num" />
@@ -65,7 +76,11 @@
         android:includeFontPadding="false"
         android:text="Test Live Name"
         android:textColor="@color/backgroundColor"
-        android:textSize="12dp"
+        android:textSize="13dp"
+        android:shadowDx="0.3"
+        android:shadowDy="0.3"
+        android:shadowColor="#333333"
+        android:shadowRadius="2"
         app:layout_constraintBottom_toTopOf="@id/iv_live_num"
         app:layout_constraintStart_toEndOf="@id/guide_margine_left"
         app:layout_constraintWidth_percent="0.94" />
@@ -81,7 +96,7 @@
         android:paddingVertical="1dp"
         android:text="Test Live Name"
         android:textColor="@color/mainTextColor"
-        android:textSize="12dp"
+        android:textSize="10dp"
         app:layout_constraintBottom_toTopOf="@id/tv_live_name"
         app:layout_constraintStart_toEndOf="@id/guide_margine_left" />
 

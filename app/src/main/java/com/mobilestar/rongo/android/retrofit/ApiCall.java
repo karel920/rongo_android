@@ -6,7 +6,6 @@ import com.mobilestar.rongo.android.activity.Login.model.LoginInfo;
 import com.mobilestar.rongo.android.activity.Login.model.LoginRes;
 
 import java.util.ArrayList;
-import com.mobilestar.rongo.android.activity.Home.fragment.model.LiveInfo;
 import com.mobilestar.rongo.android.activity.Home.fragment.model.LiveInfoRes;
 
 import java.io.File;
@@ -84,6 +83,10 @@ public class ApiCall {
                 iApiCallback.onFailure("" + t.getMessage());
             }
         });
+    }
+
+    public void getLiveDetail(String token, Integer liveId, final IApiCallback<ArrayList<LiveListInfo>> iApiCallback) {
+
     }
 
 //    public void register(LiveInfo loginData, final IApiCallback<LiveInfoRes> iApiCallback) {

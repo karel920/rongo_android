@@ -15,7 +15,7 @@ import android.widget.Spinner;
 import com.mobilestar.rongo.android.R;
 import com.mobilestar.rongo.android.activity.Home.fragment.adapter.GoodRecyclerAdapter;
 import com.mobilestar.rongo.android.activity.Home.fragment.adapter.LiveRecyclerAdapter;
-import com.mobilestar.rongo.android.activity.Home.fragment.model.LiveInfo;
+import com.mobilestar.rongo.android.activity.Home.live.fragment.model.LiveInfo;
 import com.mobilestar.rongo.android.adpater.SearchCategorySpinnerAdapter;
 import com.mobilestar.rongo.android.adpater.StoreAdapter;
 import com.mobilestar.rongo.android.interfaces.IRecyclerClickListener;

@@ -117,18 +117,11 @@ public class LiveListFragment extends BaseFragment implements IRecyclerClickList
     }
 
     private void showLoader() {
-        /*if (!TextUtils.isEmpty(search) && page == 1)
-            refreshLayout.setRefreshing(true);
-        else if (page == 1 && !refreshLayout.isRefreshing())*/
         ProgressHelper.showDialog(getContext());
-        /*else if (!refreshLayout.isRefreshing())
-            progressBar.setVisibility(View.VISIBLE);*/
     }
 
     private void hideLoader() {
         ProgressHelper.dismiss();
-        /*progressBar.setVisibility(View.GONE);
-        refreshLayout.setRefreshing(false);*/
         isLoading = false;
     }
 
@@ -136,6 +129,8 @@ public class LiveListFragment extends BaseFragment implements IRecyclerClickList
     @Override
     public void onRecyclerClick(int pos, Object data, Object type) {
         if (type.toString().equals("click_live")) {
+            LiveListInfo info = this.mLiveList.get(pos);
+            LiveRoomActivity.liveListInfo = info;
             Intent intent = new Intent(getContext(), LiveRoomActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             getContext().startActivity(intent);

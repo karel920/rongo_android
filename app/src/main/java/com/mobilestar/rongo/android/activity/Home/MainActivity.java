@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.mobilestar.rongo.android.Fragment.HomeFragment;
+import com.mobilestar.rongo.android.fragment.HomeFragment;
 import com.mobilestar.rongo.android.fragment.notification.NotificationNewsFragment;
 import com.mobilestar.rongo.android.fragment.ProfileFragment;
 import com.mobilestar.rongo.android.fragment.SearchFragment;

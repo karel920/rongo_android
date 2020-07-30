@@ -22,7 +22,6 @@
         <activity android:name=".activity.Purchase.PaymentMethodAddActivity"/>
         <activity android:name=".activity.Purchase.PaymentMethodActivity"/>
         <activity android:name=".activity.Purchase.PurchaseActivity"/>
-        <activity android:name=".activity.GoodDetail.GoodDetailActivity" />
         <activity android:name=".activity.Login.ChangeDeviceActivity" />
         <activity android:name=".activity.Login.LoginActivity" />
         <activity android:name=".activity.Login.SplashActivity">

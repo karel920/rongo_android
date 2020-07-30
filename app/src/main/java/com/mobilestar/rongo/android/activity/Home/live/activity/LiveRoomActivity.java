@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mobilestar.rongo.android.activity.Home.fragment.model.LiveListInfo;
 import com.mobilestar.rongo.android.activity.Home.live.activity.adapter.ChatListAdapter;
 import com.mobilestar.rongo.android.activity.Home.live.activity.adapter.GoodListAdapter;
 import com.mobilestar.rongo.android.activity.Home.live.activity.adapter.StampListAdapter;
@@ -18,7 +19,10 @@ import com.mobilestar.rongo.android.activity.Home.live.activity.model.GoodInfo;
 import com.mobilestar.rongo.android.R;
 import com.mobilestar.rongo.android.activity.Home.live.activity.model.StampInfo;
 import com.mobilestar.rongo.android.base.BaseActivity;
+import com.mobilestar.rongo.android.helper.AppSharedPreference;
+import com.mobilestar.rongo.android.helper.InternetCheck;
 import com.mobilestar.rongo.android.interfaces.IRecyclerClickListener;
+import com.mobilestar.rongo.android.retrofit.ApiCall;
 
 import java.util.ArrayList;
 
@@ -26,6 +30,8 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 public class LiveRoomActivity extends BaseActivity implements IRecyclerClickListener {
+
+    static public LiveListInfo liveListInfo;
 
     @BindView(R.id.li_goods_list)
     LinearLayout liGoodsList;
@@ -69,6 +75,17 @@ public class LiveRoomActivity extends BaseActivity implements IRecyclerClickList
         recyclerStamp.setAdapter(mStampListAdapter);
 
         setVirtualData();
+    }
+
+    private void loadDatas() {
+        if (InternetCheck.isConnectedToInternet(getActivity())) {
+            hideLoader();
+            showLoader();
+            isLoading = true;
+            AppSharedPreference preference = AppSharedPreference.getInstance(this);
+            String token = preference.getTokenData().getToken().getAccessToken();
+            ApiCall.getInstance().getLiveList(token, this);
+        }
     }
 
     void setVirtualData(){
