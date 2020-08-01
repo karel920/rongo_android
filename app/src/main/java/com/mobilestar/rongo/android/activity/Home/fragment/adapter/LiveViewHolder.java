@@ -39,9 +39,9 @@ public class LiveViewHolder extends RecyclerView.ViewHolder {
 
         this.txtLiveNameView.setText(info.getTitle());
         this.txtLiveTag.setText(info.getTag());
-        this.txtNumView.setText(info.getNumJoined().toString());
+        this.txtNumView.setText(info.getNumJoined().getNumViewers().toString());
 
-        Glide.with(this.itemView).load(info.getThumbnail()).centerCrop().placeholder(R.drawable.img_store_placeholder).into(imgThumbView);
+//        Glide.with(this.itemView).load(info.getThumbnail()).centerCrop().placeholder(R.drawable.img_store_placeholder).into(imgThumbView);
     }
 
     public LiveListInfo getInfo() {

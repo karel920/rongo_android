@@ -2,14 +2,24 @@ package com.mobilestar.rongo.android.helper;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Base64;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 
+import java.io.UnsupportedEncodingException;
+import java.security.Key;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.crypto.spec.SecretKeySpec;
+
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 
 public class Helper {
 
@@ -56,4 +66,16 @@ public class Helper {
         return progressDrawable;
     }
 
+    public static String generateUserToken(String userId, String security) {
+        try {
+            byte[] keyData = security.getBytes("UTF-8");
+            String jwtStr = Jwts.builder().claim("user_id", userId)
+                    .signWith(SignatureAlgorithm.HS256, security.getBytes()).compact();
+            Log.e("Stream Token", jwtStr);
+            return jwtStr;
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

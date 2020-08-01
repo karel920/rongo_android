@@ -17,9 +17,9 @@ public class LiveListInfo {
     @SerializedName("status")
     @Expose
     private Integer status;
-    @SerializedName("nTotalUsers")
+    @SerializedName("nViewer")
     @Expose
-    private Integer numJoined;
+    private ViewCountInfo numJoined;
     @SerializedName("thumbnail")
     @Expose
     private String thumbnail;
@@ -59,11 +59,11 @@ public class LiveListInfo {
         this.status = status;
     }
 
-    public Integer getNumJoined() {
+    public ViewCountInfo getNumJoined() {
         return numJoined;
     }
 
-    public void setNumJoined(Integer numJoined) {
+    public void setNumJoined(ViewCountInfo numJoined) {
         this.numJoined = numJoined;
     }
 
