@@ -1,4 +1,4 @@
-package com.mobilestar.rongo.android.Fragment.rank.model;
+package com.mobilestar.rongo.android.fragment.rank.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

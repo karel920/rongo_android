@@ -1,15 +1,16 @@
-package com.mobilestar.rongo.android.Fragment.rank.adapter;
+package com.mobilestar.rongo.android.fragment.rank.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mobilestar.rongo.android.Fragment.rank.model.RankInfo;
 import com.mobilestar.rongo.android.R;
 import com.mobilestar.rongo.android.base.BaseRecycler;
+import com.mobilestar.rongo.android.fragment.rank.model.RankInfo;
 import com.mobilestar.rongo.android.interfaces.IRecyclerClickListener;
 
 public class RankListAdapter extends BaseRecycler<RankInfo> {
@@ -32,6 +33,13 @@ public class RankListAdapter extends BaseRecycler<RankInfo> {
             @Override
             public void onClick(View v) {
                 listener.onRecyclerClick(position, null, "click_news");
+            }
+        });
+
+        ((RankViewHolder) holder).btnGoStore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), v.getTag().toString(), Toast.LENGTH_SHORT).show();//store id
             }
         });
     }

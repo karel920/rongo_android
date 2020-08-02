@@ -8,22 +8,29 @@ public class NewsInfo {
     @SerializedName("id")
     @Expose
     private String id;
-    @SerializedName("news")
+    @SerializedName("title")
     @Expose
-    private String news;
-    @SerializedName("created_at")
+    private String title;
+    @SerializedName("body")
     @Expose
-    private String createdAt;
+    private String body;
+    @SerializedName("date")
+    @Expose
+    private String date;
 
     public String getId() {
         return id;
     }
 
-    public String getNews() {
-        return news;
+    public String getTitle() {
+        return title;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
+    public String getBody() {
+        return body;
+    }
+
+    public String getDate() {
+        return date;
     }
 }

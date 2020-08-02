@@ -4,6 +4,10 @@ import com.mobilestar.rongo.android.activity.Home.fragment.model.LiveDetailInfo;
 import com.mobilestar.rongo.android.activity.Home.fragment.model.LiveInfoRes;
 import com.mobilestar.rongo.android.activity.Home.fragment.model.LiveListInfo;
 import com.mobilestar.rongo.android.activity.Login.model.LoginRes;
+import com.mobilestar.rongo.android.fragment.notification.model.NewsInfo;
+import com.mobilestar.rongo.android.fragment.notification.model.NotificationInfo;
+import com.mobilestar.rongo.android.fragment.notification.model.NotificationInfoRes;
+import com.mobilestar.rongo.android.fragment.rank.model.RankInfo;
 
 import java.util.ArrayList;
 
@@ -47,5 +51,20 @@ interface APIService {
     @POST("user_name_check")
     Call<LiveInfoRes> checkUserName(@Field("user_name") String userName);
 
+
+    @GET("notification")
+    Call<ArrayList<NotificationInfo>> getNotifications(
+            @Header("Authorization") String tokenString
+    );
+
+    @GET("news")
+    Call<ArrayList<NewsInfo>> getNews(
+            @Header("Authorization") String tokenString
+    );
+
+    @GET("products/ranking")
+    Call<ArrayList<RankInfo>> getRanks(
+            @Header("Authorization") String tokenString
+    );
 
 }

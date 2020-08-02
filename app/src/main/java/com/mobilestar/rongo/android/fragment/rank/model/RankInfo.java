@@ -1,4 +1,4 @@
-package com.mobilestar.rongo.android.Fragment.rank.model;
+package com.mobilestar.rongo.android.fragment.rank.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -8,36 +8,85 @@ public class RankInfo {
     @SerializedName("id")
     @Expose
     private String id;
-    @SerializedName("image")
+    @SerializedName("label")
     @Expose
-    private String image;
+    private String label;
     @SerializedName("price")
     @Expose
     private String price;
-    @SerializedName("product_name")
+    @SerializedName("status_id")
     @Expose
-    private String productName;
-    @SerializedName("store_name")
+    private String statusId;
+    @SerializedName("thumbnail")
+    @Expose
+    private String thumbnail;
+    @SerializedName("number")
+    @Expose
+    private String number;
+    @SerializedName("qty")
+    @Expose
+    private String qty;
+    @SerializedName("ship_days")
+    @Expose
+    private String shipDays;
+    @SerializedName("shipper")
+    @Expose
+    private String shipper;
+    @SerializedName("storeId")
+    @Expose
+    private String storeId;
+    @SerializedName("storeName")
     @Expose
     private String storeName;
+    @SerializedName("storeThumbnail")
+    @Expose
+    private String storeThumbnail;
 
     public String getId() {
         return id;
     }
 
-    public String getImage() {
-        return image;
+    public String getLabel() {
+        return label;
     }
 
     public String getPrice() {
         return price;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getStatusId() {
+        return statusId;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public String getQty() {
+        return qty;
+    }
+
+    public String getShipDays() {
+        return shipDays;
+    }
+
+    public String getShipper() {
+        return shipper;
+    }
+
+    public String getStoreId() {
+        return storeId;
     }
 
     public String getStoreName() {
         return storeName;
+    }
+
+    public String getStoreThumbnail() {
+        return storeThumbnail;
     }
 }

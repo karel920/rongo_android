@@ -41,8 +41,19 @@ public class DateUtill {
 
     public static String formatDateTime(String date){
         try {
-            return new SimpleDateFormat("MMM d, yyyy", Locale.ENGLISH).format(
-                    new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).parse(date)
+            return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(
+                    new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'", Locale.ENGLISH).parse(date)
+            );
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return date;
+        }
+    }
+
+    public static String formatDateTime2(String date){
+        try {
+            return new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.ENGLISH).format(
+                    new SimpleDateFormat("yyyy/MM/dd HH:mm", Locale.ENGLISH).parse(date)
             );
         } catch (ParseException e) {
             e.printStackTrace();

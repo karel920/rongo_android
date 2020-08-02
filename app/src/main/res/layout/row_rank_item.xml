@@ -4,12 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_alignParentTop="true"
-        android:background="@color/gray" />
-
     <ImageView
         android:id="@+id/iv_product"
         android:layout_width="70dp"
@@ -100,5 +94,12 @@
         android:text="Store"
         android:textColor="@color/goldColor"
         android:textSize="16dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/iv_product"
+        android:background="@color/gray" />
+
 
 </RelativeLayout>
