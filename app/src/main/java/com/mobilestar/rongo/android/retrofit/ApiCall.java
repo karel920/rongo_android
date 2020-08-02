@@ -1,5 +1,6 @@
 package com.mobilestar.rongo.android.retrofit;
 
+import com.mobilestar.rongo.android.activity.Home.fragment.model.LiveDetailInfo;
 import com.mobilestar.rongo.android.activity.Home.fragment.model.LiveInfoRes;
 import com.mobilestar.rongo.android.activity.Home.fragment.model.LiveListInfo;
 import com.mobilestar.rongo.android.activity.Login.model.LoginInfo;
@@ -85,6 +86,22 @@ public class ApiCall {
         });
     }
 
+    public void getLiveDetail(String token, Integer liveId, final IApiCallback<LiveDetailInfo> iApiCallback) {
+        String tokenString = "bearer " + token;
+
+        Call<LiveDetailInfo> call = service.getLiveDetail(liveId, tokenString);
+        call.enqueue(new Callback<LiveDetailInfo>() {
+            @Override
+            public void onResponse(Call<LiveDetailInfo> call, Response<LiveDetailInfo> response) {
+                iApiCallback.onSuccess("getLiveList", response);
+            }
+
+            @Override
+            public void onFailure(Call<LiveDetailInfo> call, Throwable t) {
+                iApiCallback.onFailure("" + t.getMessage());
+            }
+        });
+    }
 
     public void checkUserName(String userName, IApiCallback<LiveInfoRes> iApiCallback) {
         Call<LiveInfoRes> call = service.checkUserName(userName);
