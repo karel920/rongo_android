@@ -2,6 +2,7 @@ package com.mobilestar.rongo.android.activity.Home.live.activity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -118,6 +119,7 @@ public class LiveRoomActivity extends BaseActivity implements IRecyclerClickList
     ChatListAdapter mChatListAdapter;
     StampListAdapter mStampListAdapter;
 
+    User chatUser;
     ChatClient chatClient;
     ChatListener chatListener;
     Subscription subscription;
@@ -194,15 +196,15 @@ public class LiveRoomActivity extends BaseActivity implements IRecyclerClickList
         chatClient = Chat.getInstance().getClient();
 
         AppSharedPreference preference = AppSharedPreference.getInstance(this);
-        User user = new User(preference.getTokenData().getStreamUserId());
+        chatUser = new User(preference.getTokenData().getStreamUserId());
         LoginInfo userInfo = preference.getLoginData();
         Map<String, Object> extraData = new HashMap<String, Object>();
         extraData.put("name", userInfo.getNickname());
-        user.setExtraData(extraData);
+        chatUser.setExtraData(extraData);
         String token = Helper.generateUserToken(preference.getTokenData().getStreamUserId(), Constants.StreamSecretKey);
         chatListener = new ChatListener();
 
-        chatClient.setUser(user, token, chatListener);
+        chatClient.setUser(chatUser, token, chatListener);
     }
 
     private void configureChannel() {
@@ -218,22 +220,12 @@ public class LiveRoomActivity extends BaseActivity implements IRecyclerClickList
                 return null;
             }
         });
-//        chatClient.queryChannel("livestream", liveDetailInfo.getChannelId(), new ChannelQueryRequest()).enqueue(new Function1<Result<Channel>, Unit>() {
-//            @Override
-//            public Unit invoke(Result<Channel> channelResult) {
-//                if (channelResult.isSuccess()) {
-//                    Channel channel = channelResult.data();
-//                    channelLoaded(channel);
-//                }
-//
-//                return null;
-//            }
-//        });
     }
 
     private void channelLoaded(Channel channel) {
         this.mMessageList = (ArrayList<Message>) channel.getMessages();
         mChatListAdapter.addAllItem(mMessageList);
+        scrollToBottom(recyclerChat);
 
         subscription = channelController.events().subscribe(new Function1<ChatEvent, Unit>() {
             @Override
@@ -245,18 +237,6 @@ public class LiveRoomActivity extends BaseActivity implements IRecyclerClickList
                 return null;
             }
         });
-
-//        subscription = this.chatClient.events().subscribe(new Function1<ChatEvent, Unit>() {
-//            @Override
-//            public Unit invoke(ChatEvent chatEvent) {
-//
-//                if (chatEvent instanceof NewMessageEvent) {
-//                    upsertMessage(chatEvent.getMessage());
-//                }
-//
-//                return null;
-//            }
-//        });
     }
 
     protected void upsertMessage(Message message) {
@@ -283,6 +263,20 @@ public class LiveRoomActivity extends BaseActivity implements IRecyclerClickList
         btnStamp.setVisibility(hidden ? View.GONE : View.VISIBLE);
         btnLike.setVisibility(hidden ? View.GONE : View.VISIBLE);
         tvLikeCount.setVisibility(hidden ? View.GONE : View.VISIBLE);
+        etChat.setVisibility(hidden ? View.GONE : View.VISIBLE);
+
+        etChat.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    sendMessage();
+                    return true;
+                }
+
+                return false;
+            }
+        });
     }
 
     private void scrollToBottom(final RecyclerView recyclerView) {
@@ -303,6 +297,25 @@ public class LiveRoomActivity extends BaseActivity implements IRecyclerClickList
                 }
             }
         });
+    }
+
+    private void sendMessage() {
+        if (!etChat.getText().toString().equals("")) {
+            String string = etChat.getText().toString();
+            Message message = new Message();
+            message.setText(string);
+            message.setUser(chatUser);
+
+            channelController.sendMessage(message).enqueue(new Function1<Result<Message>, Unit>() {
+                @Override
+                public Unit invoke(Result<Message> messageResult) {
+                    return null;
+                }
+            });
+
+            etChat.setText("");
+            Helper.hideSoftKeyboard(this, etChat);
+        }
     }
 
     @OnClick(R.id.iv_product)
