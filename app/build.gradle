@@ -60,6 +60,7 @@ dependencies {
     implementation "com.arthurivanets.bottomsheet:bottomsheets-core:1.0.0"
     compileOnly 'com.google.android.wearable:wearable:2.7.0'
 
+    implementation("com.squareup.okhttp3:okhttp:3.4.1")
     // Stream Chat
     implementation 'com.github.GetStream:stream-chat-android:4.0.13'
 

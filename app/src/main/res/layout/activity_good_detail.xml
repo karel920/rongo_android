@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/personal_info_back"
+            android:id="@+id/back"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center_vertical"
@@ -115,7 +115,7 @@
                 android:padding="10dp"
                 android:orientation="vertical">
                 <TextView
-                    android:id="@+id/textView8"
+                    android:id="@+id/good_detail_page_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/black"
@@ -137,7 +137,7 @@
                         android:text="品番：" />
 
                     <TextView
-                        android:id="@+id/textView13"
+                        android:id="@+id/good_detail_page_number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -151,18 +151,19 @@
                     android:orientation="horizontal">
 
                     <ToggleButton
-                        android:id="@+id/toggleButton2"
+                        android:id="@+id/good_detail_page_like"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
                         android:background="@drawable/good_detail_fav_button_back"
                         android:textOn="お気に入り"
                         android:textOff="お気に入り"
                         android:textColor="#BBA884"
+                        android:checked="true"
                         android:paddingLeft="30dp"
                         android:paddingRight="10dp"/>
 
                     <TextView
-                        android:id="@+id/textView10"
+                        android:id="@+id/good_detail_page_follower"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -221,9 +222,9 @@
                     android:orientation="horizontal"
                     android:layout_marginTop="20dp">
                     <ImageView
-                        android:id="@+id/imageView3"
+                        android:id="@+id/good_detail_page_shop_img"
                         android:layout_width="50dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="50dp"
                         app:srcCompat="@drawable/img_store_placeholder" />
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -237,6 +238,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textSize="12dp"
+                            android:id="@+id/good_detail_page_shop_name"
                             android:text="ストア名が入ります"/>
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -251,6 +253,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:id="@+id/good_detail_page_shop_follower"
                                 android:text="100,000"/>
                         </LinearLayout>
                     </LinearLayout>
@@ -301,6 +304,7 @@
                         android:text="税 + 送料込"
                         android:textColor="@android:color/white"/>
                     <TextView
+                        android:id="@+id/good_detail_page_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="¥10,000"
