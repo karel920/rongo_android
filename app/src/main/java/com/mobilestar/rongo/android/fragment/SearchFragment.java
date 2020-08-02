@@ -78,7 +78,7 @@ public class SearchFragment extends Fragment implements IRecyclerClickListener {
             mTestData.add(new LiveInfo());
         }
 
-        this.goodListAdapter = new GoodRecyclerAdapter();
+        this.goodListAdapter = new GoodRecyclerAdapter(getContext());
         this.liveListAdapter = new LiveRecyclerAdapter(this);
         this.storeAdapter = new StoreAdapter();
         this.categorySpinnerAdapter = new SearchCategorySpinnerAdapter();

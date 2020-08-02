@@ -12,17 +12,26 @@ import androidx.viewpager.widget.PagerAdapter;
 import com.bumptech.glide.Glide;
 import com.mobilestar.rongo.android.R;
 
+import java.util.ArrayList;
+
 public class GoodDetailImgAdapter extends PagerAdapter {
 
     Context context;
+    ArrayList<String> portfolios = new ArrayList<>();
 
     public GoodDetailImgAdapter(Context _context) {
         this.context = _context;
+        portfolios = new ArrayList<>();
     }
 
     @Override
     public int getCount() {
-        return 10;
+        return portfolios.size();
+    }
+
+    public void setAllItem(ArrayList<String> _items) {
+        this.portfolios = _items;
+        this.notifyDataSetChanged();
     }
 
     @NonNull
@@ -32,7 +41,7 @@ public class GoodDetailImgAdapter extends PagerAdapter {
 
         View cell = inflater.inflate(R.layout.item_good_detail_img, container, false);
         ImageView img = cell.findViewById(R.id.good_detail_cell_img);
-        Glide.with(context).load(R.drawable.icon_live_thumb).into(img);
+        Glide.with(context).load(portfolios.get(position)).into(img);
         container.addView(cell);
         return cell;
     }

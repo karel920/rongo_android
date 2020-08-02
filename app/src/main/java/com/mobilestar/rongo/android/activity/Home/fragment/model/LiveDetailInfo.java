@@ -34,11 +34,5 @@ public class LiveDetailInfo {
     @SerializedName("date")
     @Expose
     private String dateString ;
-    @SerializedName("isLike")
-    @Expose
-    private Boolean isLike;
-    @SerializedName("thumbnail")
-    @Expose
-    private String thumbnail;
 
 }

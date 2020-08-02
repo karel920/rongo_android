@@ -77,16 +77,6 @@ public class LiveRoomActivity extends BaseActivity implements IRecyclerClickList
         setVirtualData();
     }
 
-    private void loadDatas() {
-        if (InternetCheck.isConnectedToInternet(getActivity())) {
-            hideLoader();
-            showLoader();
-            isLoading = true;
-            AppSharedPreference preference = AppSharedPreference.getInstance(this);
-            String token = preference.getTokenData().getToken().getAccessToken();
-            ApiCall.getInstance().getLiveList(token, this);
-        }
-    }
 
     void setVirtualData(){
         ArrayList<GoodInfo> goodListData = new ArrayList<GoodInfo>();

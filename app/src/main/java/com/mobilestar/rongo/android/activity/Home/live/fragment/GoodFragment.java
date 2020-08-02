@@ -51,7 +51,7 @@ public class GoodFragment extends Fragment implements IRecyclerClickListener {
         this.goodsList = fragmentContent.findViewById(R.id.home_good_list);
         this.swipeRefreshLayout = fragmentContent.findViewById(R.id.good_refresh_layout);
 
-        adapter = new GoodRecyclerAdapter();
+        adapter = new GoodRecyclerAdapter(getContext());
         adapter.setListener(this);
         GridLayoutManager layoutManager = new GridLayoutManager(this.getContext(), 3);
         this.goodsList.setLayoutManager(layoutManager);
