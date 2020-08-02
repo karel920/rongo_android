@@ -7,6 +7,11 @@
     android:background="@color/gray">
 
     <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/img_logo"/>
+
+    <ImageView
         android:id="@+id/iv_store_logo"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -46,7 +51,7 @@
         android:background="@drawable/btn_bg_live_store"
         android:paddingHorizontal="5dp"
         android:paddingVertical="2dp"
-        android:text="Store"
+        android:text=" + フォロー"
         android:textColor="@color/goldColor" />
 
     <ImageView
@@ -72,17 +77,24 @@
         <ImageView
             android:layout_width="20dp"
             android:layout_height="16dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="1dp"
             android:src="@drawable/ic_live_watch" />
 
         <TextView
             android:id="@+id/tv_watch_state"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="1dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginEnd="5dp"
             android:includeFontPadding="false"
-            android:text="watch number"
+            android:text="10000 レインさんが参加しました"
             android:textColor="@color/white"
+            android:shadowDx="0.3"
+            android:shadowDy="0.3"
+            android:shadowColor="@color/mainTextColor"
+            android:shadowRadius="2"
             android:textSize="12dp" />
     </LinearLayout>
 
@@ -106,11 +118,12 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_like_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_splash_background"
             android:paddingHorizontal="5dp"
-            android:text="10000"
+            android:text="0"
             android:textColor="@color/mainTextColor" />
 
         <ImageView
@@ -157,9 +170,9 @@
         android:layout_height="match_parent"
         android:layout_above="@id/iv_product"
         android:layout_below="@id/li_watch"
-        android:layout_alignRight="@id/iv_live_stamp"
+        android:layout_alignRight="@id/et_chat"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="140dp" />
+        android:layout_marginTop="220dp" />
 
     <LinearLayout
         android:id="@+id/li_goods_list"

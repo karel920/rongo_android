@@ -117,11 +117,18 @@ public class LiveListFragment extends BaseFragment implements IRecyclerClickList
     }
 
     private void showLoader() {
+        /*if (!TextUtils.isEmpty(search) && page == 1)
+            refreshLayout.setRefreshing(true);
+        else if (page == 1 && !refreshLayout.isRefreshing())*/
         ProgressHelper.showDialog(getContext());
+        /*else if (!refreshLayout.isRefreshing())
+            progressBar.setVisibility(View.VISIBLE);*/
     }
 
     private void hideLoader() {
         ProgressHelper.dismiss();
+        /*progressBar.setVisibility(View.GONE);
+        refreshLayout.setRefreshing(false);*/
         isLoading = false;
     }
 
@@ -148,10 +155,7 @@ public class LiveListFragment extends BaseFragment implements IRecyclerClickList
 
     @Override
     public void onSuccess(String type, Response response) {
-        Log.e("Live List", response.body().toString());
-
         this.hideLoader();
-
         for (LiveListInfo info: (ArrayList<LiveListInfo>)response.body()) {
             mLiveList.add(info);
         }

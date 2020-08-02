@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.getstream.sdk.chat.Chat;
 import com.mobilestar.rongo.android.R;
 import com.mobilestar.rongo.android.activity.Home.MainActivity;
 import com.mobilestar.rongo.android.activity.Login.model.LoginInfo;
@@ -41,6 +42,8 @@ public class SplashActivity extends AppCompatActivity implements IApiCallback<Lo
         this.btnRegister.setVisibility(View.GONE);
         loginData = AppSharedPreference.getInstance(this).getLoginData();
         handler.sendEmptyMessageDelayed(0, 2000);
+
+        Chat chat = new Chat.Builder("at5dhjq8gtxz", this).build();
     }
 
     void loginWithLoginData() {

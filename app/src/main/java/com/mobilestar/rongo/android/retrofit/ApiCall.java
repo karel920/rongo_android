@@ -4,11 +4,11 @@ import com.mobilestar.rongo.android.activity.Home.fragment.model.LiveInfoRes;
 import com.mobilestar.rongo.android.activity.Home.fragment.model.LiveListInfo;
 import com.mobilestar.rongo.android.activity.Login.model.LoginInfo;
 import com.mobilestar.rongo.android.activity.Login.model.LoginRes;
+import com.mobilestar.rongo.android.fragment.notification.model.NewsInfo;
+import com.mobilestar.rongo.android.fragment.notification.model.NotificationInfo;
+import com.mobilestar.rongo.android.fragment.rank.model.RankInfo;
 
 import java.util.ArrayList;
-import com.mobilestar.rongo.android.activity.Home.fragment.model.LiveInfoRes;
-
-import java.io.File;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -85,43 +85,6 @@ public class ApiCall {
         });
     }
 
-    public void getLiveDetail(String token, Integer liveId, final IApiCallback<ArrayList<LiveListInfo>> iApiCallback) {
-
-    }
-
-//    public void register(LiveInfo loginData, final IApiCallback<LiveInfoRes> iApiCallback) {
-//
-//        MultipartBody.Part bodyImage = null;
-//        if (!TextUtils.isEmpty(loginData.getImage())) {
-//            File file = new File(loginData.getImage());
-//            RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-//            bodyImage = MultipartBody.Part.createFormData("image", file.getName(), requestBody);
-//            ;
-//        }
-//
-//        RequestBody rbuserName = RequestBody.create(MediaType.parse("multipart/form-data"), loginData.getUserName());
-//        RequestBody rbEmail = RequestBody.create(MediaType.parse("multipart/form-data"), loginData.getEmail());
-//        RequestBody rbPassword = RequestBody.create(MediaType.parse("multipart/form-data"), loginData.getPassword());
-//        RequestBody rbphone = RequestBody.create(MediaType.parse("multipart/form-data"), loginData.getPhone());
-//        RequestBody rbcountryCode = RequestBody.create(MediaType.parse("multipart/form-data"), loginData.getCountryCode());
-//        RequestBody rbfacebookId = RequestBody.create(MediaType.parse("multipart/form-data"), loginData.getFacebookId());
-//        RequestBody rbgoogleId = RequestBody.create(MediaType.parse("multipart/form-data"), loginData.getGoogleId());
-//        RequestBody dToken = RequestBody.create(MediaType.parse("multipart/form-data"), loginData.getDeviceToken());
-//        RequestBody dReferral = RequestBody.create(MediaType.parse("multipart/form-data"), loginData.getFirstReferral());
-//
-//        Call<LiveInfoRes> call = service.register(rbuserName, rbEmail, rbphone, rbcountryCode, rbPassword, rbfacebookId, rbgoogleId, dToken, dReferral, bodyImage);
-//        call.enqueue(new Callback<LiveInfoRes>() {
-//            @Override
-//            public void onResponse(Call<LiveInfoRes> call, Response<LiveInfoRes> response) {
-//                iApiCallback.onSuccess("register", response);
-//            }
-//
-//            @Override
-//            public void onFailure(Call<LiveInfoRes> call, Throwable t) {
-//                iApiCallback.onFailure("" + t.getMessage());
-//            }
-//        });
-//    }
 
     public void checkUserName(String userName, IApiCallback<LiveInfoRes> iApiCallback) {
         Call<LiveInfoRes> call = service.checkUserName(userName);
@@ -133,6 +96,57 @@ public class ApiCall {
 
             @Override
             public void onFailure(Call<LiveInfoRes> call, Throwable t) {
+                iApiCallback.onFailure("" + t.getMessage());
+            }
+        });
+    }
+
+    public void getNotifications(String token, final IApiCallback<ArrayList<NotificationInfo>> iApiCallback) {
+        String tokenString = "bearer " + token;
+
+        Call<ArrayList<NotificationInfo>> call = service.getNotifications(tokenString);
+        call.enqueue(new Callback<ArrayList<NotificationInfo>>() {
+            @Override
+            public void onResponse(Call<ArrayList<NotificationInfo>> call, Response<ArrayList<NotificationInfo>> response) {
+                iApiCallback.onSuccess("get_notification", response);
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<NotificationInfo>> call, Throwable t) {
+                iApiCallback.onFailure("" + t.getMessage());
+            }
+        });
+    }
+
+    public void getNews(String token, final IApiCallback<ArrayList<NewsInfo>> iApiCallback) {
+        String tokenString = "bearer " + token;
+
+        Call<ArrayList<NewsInfo>> call = service.getNews(tokenString);
+        call.enqueue(new Callback<ArrayList<NewsInfo>>() {
+            @Override
+            public void onResponse(Call<ArrayList<NewsInfo>> call, Response<ArrayList<NewsInfo>> response) {
+                iApiCallback.onSuccess("get_news", response);
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<NewsInfo>> call, Throwable t) {
+                iApiCallback.onFailure("" + t.getMessage());
+            }
+        });
+    }
+
+    public void getRanks(String token, final IApiCallback<ArrayList<RankInfo>> iApiCallback) {
+        String tokenString = "bearer " + token;
+
+        Call<ArrayList<RankInfo>> call = service.getRanks(tokenString);
+        call.enqueue(new Callback<ArrayList<RankInfo>>() {
+            @Override
+            public void onResponse(Call<ArrayList<RankInfo>> call, Response<ArrayList<RankInfo>> response) {
+                iApiCallback.onSuccess("get_news", response);
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<RankInfo>> call, Throwable t) {
                 iApiCallback.onFailure("" + t.getMessage());
             }
         });

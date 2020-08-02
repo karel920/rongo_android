@@ -7,15 +7,17 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.mobilestar.rongo.android.helper.AppSharedPreference;
+
 import butterknife.ButterKnife;
 
 public abstract class BaseFragment extends Fragment {
-//    protected AppSharedPreference preference;
+    protected AppSharedPreference preference;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        preference=AppSharedPreference.getInstance(getContext());
+        preference= AppSharedPreference.getInstance(getContext());
     }
 
     protected void bindView(View view){

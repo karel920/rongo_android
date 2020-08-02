@@ -17,15 +17,20 @@ import com.mobilestar.rongo.android.fragment.notification.adapter.NotificationLi
 import com.mobilestar.rongo.android.fragment.notification.model.NotificationInfo;
 import com.mobilestar.rongo.android.R;
 import com.mobilestar.rongo.android.base.BaseFragment;
+import com.mobilestar.rongo.android.helper.InternetCheck;
+import com.mobilestar.rongo.android.helper.ProgressHelper;
+import com.mobilestar.rongo.android.retrofit.ApiCall;
+import com.mobilestar.rongo.android.retrofit.IApiCallback;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NotificationListFragment extends BaseFragment {
+public class NotificationListFragment extends BaseFragment implements IApiCallback {
 
     @BindView(R.id.tv_empty)
     TextView tvEmpty;
@@ -33,8 +38,6 @@ public class NotificationListFragment extends BaseFragment {
     private NotificationListAdapter adapter;
     private int PAGE_SIZE = 10, page = 1;
     private boolean isLoading, isLastPage;
-
-    ArrayList<NotificationInfo> mTestData;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,13 +56,7 @@ public class NotificationListFragment extends BaseFragment {
     private void setRecyclerReward(View view) {
         page = 1;
 
-        mTestData = new ArrayList<NotificationInfo>();
-        for(int i =0; i< 15; i++){
-            mTestData.add(new NotificationInfo());
-        }
         adapter = new NotificationListAdapter();
-        adapter.addAllItem(mTestData);
-
         RecyclerView recyclerView = view.findViewById(R.id.recycler);
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(manager);
@@ -84,37 +81,31 @@ public class NotificationListFragment extends BaseFragment {
                 if (!isLoading && !isLastPage) {
                     if ((visibleItemCount + firstVisibleItemPosition) >= totalItemCount && firstVisibleItemPosition >= 0 && totalItemCount >= PAGE_SIZE) {
                         page = page + 1;
-                        getReward();
+                        getNotification();
                     }
                 }
             }
         });
-        getReward();
+        getNotification();
     }
 
 
-    private void getReward() {
-        //if (InternetCheck.isConnectedToInternet(getActivity())) {
-//            hideLoader();
-//            showLoader();
-//            isLoading = true;
-//            ApiCall.getInstance().awufCashList(preference.getLoginData().getId(), String.valueOf(page), this);
-        // }
+    private void getNotification() {
+        if (InternetCheck.isConnectedToInternet(getActivity())) {
+            hideLoader();
+            showLoader();
+            isLoading = true;
+            //preference.getTokenData().getToken().getAccessToken()
+            ApiCall.getInstance().getNotifications("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOTIuMTY4LjAuMTA5Ojg4ODhcL2FwaVwvYXV0aFwvcmVnaXN0ZXJcL2N1c3RvbWVyIiwiaWF0IjoxNTk2MDcyOTI4LCJleHAiOjE1OTY5MzY5MjgsIm5iZiI6MTU5NjA3MjkyOCwianRpIjoiZzd0Y0RLeGdKOHBzU2thSiIsInN1YiI6NDYsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.BmTXz2W9X2feGlHEQzbz2UC7RWxI-g-ciV71S7SKBvY", this);
+         }
     }
 
     private void showLoader() {
-        /*if (!TextUtils.isEmpty(search) && page == 1)
-            refreshLayout.setRefreshing(true);
-        else if (page == 1 && !refreshLayout.isRefreshing())*/
-//        ProgressHelper.showDialog(getContext());
-        /*else if (!refreshLayout.isRefreshing())
-            progressBar.setVisibility(View.VISIBLE);*/
+        ProgressHelper.showDialog(getContext());
     }
 
     private void hideLoader() {
-//        ProgressHelper.dismiss();
-        /*progressBar.setVisibility(View.GONE);
-        refreshLayout.setRefreshing(false);*/
+        ProgressHelper.dismiss();
         isLoading = false;
     }
 
@@ -126,5 +117,28 @@ public class NotificationListFragment extends BaseFragment {
             instance = new NotificationListFragment();
         }
         return instance;
+    }
+
+    @Override
+    public void onSuccess(String type, Response response) {
+        hideLoader();
+        if (response.isSuccessful()) {
+            if (type.equals("get_notification")) {
+                adapter.addAllItem((ArrayList<NotificationInfo>) (response.body()));
+                if(adapter.getItemCount() == 0){
+                    tvEmpty.setVisibility(View.VISIBLE);
+                }else{
+                    tvEmpty.setVisibility(View.GONE);
+                }
+            }
+        } else {
+            showToast("Something Wrong");
+        }
+    }
+
+    @Override
+    public void onFailure(Object data) {
+        hideLoader();
+        showToast("Failed");
     }
 }

@@ -22,6 +22,10 @@ android {
     }
 
     // Butterknife requires Java 8.
+    dataBinding {
+        enabled = true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -57,4 +61,12 @@ dependencies {
     compileOnly 'com.google.android.wearable:wearable:2.7.0'
 
     implementation("com.squareup.okhttp3:okhttp:3.4.1")
+    // Stream Chat
+    implementation 'com.github.GetStream:stream-chat-android:4.0.13'
+
+    api 'io.jsonwebtoken:jjwt-api:0.11.2'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'
+    runtimeOnly('io.jsonwebtoken:jjwt-orgjson:0.11.2') {
+        exclude group: 'org.json', module: 'json' //provided by Android natively
+    }
 }

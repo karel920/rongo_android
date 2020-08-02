@@ -12,7 +12,9 @@ import com.mobilestar.rongo.android.R;
 import com.mobilestar.rongo.android.base.BaseRecycler;
 import com.mobilestar.rongo.android.interfaces.IRecyclerClickListener;
 
-public class ChatListAdapter extends BaseRecycler<ChatInfo> {
+import io.getstream.chat.android.client.models.Message;
+
+public class ChatListAdapter extends BaseRecycler<Message> {
     IRecyclerClickListener listener;
 
     public ChatListAdapter(IRecyclerClickListener listener){
@@ -27,7 +29,7 @@ public class ChatListAdapter extends BaseRecycler<ChatInfo> {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ((ChatViewHolder)holder).setData((ChatInfo)list.get(position), position);
+        ((ChatViewHolder)holder).setData((Message)list.get(position), position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

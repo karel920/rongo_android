@@ -11,11 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 
-import com.mobilestar.rongo.android.Fragment.rank.RankListFragment;
 import com.mobilestar.rongo.android.activity.Home.fragment.GoodFragment;
 import com.mobilestar.rongo.android.activity.Home.fragment.LiveListFragment;
 import com.mobilestar.rongo.android.R;
 import com.mobilestar.rongo.android.base.BaseFragment;
+import com.mobilestar.rongo.android.fragment.rank.RankListFragment;
 
 import butterknife.BindView;
 

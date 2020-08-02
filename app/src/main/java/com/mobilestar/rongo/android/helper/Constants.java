@@ -22,6 +22,9 @@ public class Constants {
     public static final String VOTED="voted";
     public static final String DELTED_MY_POST_CONTEST="delete_my_post_contest";
 
+    public static final String StreamAPIKey = "at5dhjq8gtxz";
+    public static final String StreamSecretKey = "vu4bs8rrj7mztycujf2tknda7xwdv2gjdptesrybz76h9qkprn6qandu7hpd3scg";
+
     public static int UNREAD_NOTIFICATION_COUNT =0;
 
     public enum LikeType{
